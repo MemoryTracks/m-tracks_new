@@ -1,1 +1,30 @@
+# Memory Tracks site settings
 
+# Don't list folder contents
+Options -Indexes
+
+RewriteEngine On
+
+# Always use the secure https:// address
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Old pages from the Hostinger Builder site, sent to their new homes
+RewriteRule ^products/?$ / [L,R=301]
+RewriteRule ^development/?$ /research#collaborations [L,R=301,NE]
+RewriteRule ^medtracks-research-nhs-highland/?$ /research#nhs-highland [L,R=301,NE]
+RewriteRule ^pricing/?$ /medtracks#pricing [L,R=301,NE]
+RewriteRule ^set-up/?$ /help#set-up [L,R=301,NE]
+RewriteRule ^notifications/?$ /help#notifications [L,R=301,NE]
+RewriteRule ^troubleshooting-ios/?$ /help#iphone [L,R=301,NE]
+RewriteRule ^troubleshooting-android/?$ /help#android [L,R=301,NE]
+
+# Tidy addresses: /index.html becomes /, and /about.html becomes /about
+RewriteRule ^index\.html$ / [L,R=301]
+RewriteCond %{THE_REQUEST} \s/([^.?\s]+)\.html[\s?]
+RewriteRule ^ /%1 [L,R=301]
+
+# Serve about.html when someone visits /about
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
