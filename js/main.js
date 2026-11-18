@@ -16,4 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
   if (year) {
     year.textContent = new Date().getFullYear();
   }
+
+  // Contact page: show an error message, and preselect the topic from the link.
+  var params = new URLSearchParams(window.location.search);
+  var error = document.getElementById('form-error');
+  if (error && params.get('error')) {
+    error.hidden = false;
+  }
+  var topic = document.getElementById('topic');
+  if (topic && params.get('topic')) {
+    topic.value = params.get('topic');
+  }
 });
