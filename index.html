@@ -12,7 +12,10 @@
   <meta property="og:title" content="MedTracks by Memory Tracks">
   <meta property="og:description" content="Music-led medication reminders, built on peer-reviewed research with NHS Highland.">
   <meta property="og:url" content="https://www.m-tracks.com/">
-  <!-- TODO: add og:image once we have a share image, e.g. /images/share.jpg -->
+  <meta property="og:image" content="https://www.m-tracks.com/images/memory-tracks-logo-512.png">
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/main.js" defer></script>
@@ -23,8 +26,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/" aria-label="Memory Tracks home">
-        <!-- TODO: replace with logo image, e.g. <img src="/images/logo.svg" alt="Memory Tracks"> -->
-        <span class="brand-mark" aria-hidden="true">&#9835;</span>
+        <img class="brand-mark" src="/images/memory-tracks-logo.png" height="40" alt="">
         <span class="brand-name">Memory Tracks</span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -49,7 +51,7 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <p class="eyebrow">MedTracks</p>
+          <p class="eyebrow eyebrow-product"><img src="/images/medtracks-icon.png" width="28" height="28" alt=""> MedTracks</p>
           <h1>Your favourite songs, turned into medication reminders.</h1>
           <p class="lead">MedTracks links the music that engages you to the medicines you take, helping you stay on track every day. Built on peer-reviewed research with NHS Highland.</p>
           <div class="button-row">
@@ -64,16 +66,9 @@
             <a class="btn btn-secondary" href="/contact">Work with us</a>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <!-- TODO: replace with an app screenshot, e.g. <img src="/images/medtracks-screen.png" alt=""> -->
+        <div class="hero-visual">
           <div class="phone">
-            <div class="phone-screen">
-              <div class="phone-note">&#9835;</div>
-              <p class="phone-time">08:00</p>
-              <p class="phone-label">Morning tablets</p>
-              <p class="phone-song">Now playing: a song from your teenage years</p>
-              <span class="phone-btn">Taken</span>
-            </div>
+            <img src="/images/app-home.jpg" width="600" height="1299" alt="MedTracks home screen listing the day's medicines, each with a time and a linked song.">
           </div>
         </div>
       </div>
@@ -100,10 +95,40 @@
       </div>
     </section>
 
-    <!-- EVIDENCE STRIP -->
-    <section class="section section-tint" aria-labelledby="evidence-heading">
+    <!-- IN THE APP -->
+    <section class="section section-tint" aria-labelledby="app-heading">
       <div class="container">
-        <h2 id="evidence-heading" class="visually-hidden">The evidence</h2>
+        <h2 id="app-heading">In the app</h2>
+        <ul class="screens">
+          <li>
+            <div class="phone phone-small">
+              <img src="/images/app-notification.jpg" width="600" height="1299" loading="lazy" alt="iPhone notification showing the medicine, its song, and options to mark it taken or snooze.">
+            </div>
+            <p><strong>Your song plays at reminder time.</strong> Mark the dose as taken, or snooze for 5, 10 or 15 minutes.</p>
+          </li>
+          <li>
+            <div class="phone phone-small">
+              <img src="/images/app-taken.jpg" width="600" height="1299" loading="lazy" alt="MedTracks list with a medicine swiped to the right to reveal a Taken button.">
+            </div>
+            <p><strong>Swipe right to confirm.</strong> Each dose is marked as taken, so you can see your day at a glance.</p>
+          </li>
+          <li>
+            <div class="phone phone-small">
+              <img src="/images/app-edit.jpg" width="600" height="1299" loading="lazy" alt="MedTracks list with a medicine swiped to the left to reveal Edit and Delete buttons.">
+            </div>
+            <p><strong>Swipe left to change.</strong> Edit the time, dose or song, or remove a reminder.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EVIDENCE STRIP -->
+    <section class="section" aria-labelledby="evidence-heading">
+      <div class="container">
+        <div class="partner">
+          <h2 id="evidence-heading" class="partner-label">Research partner</h2>
+          <img src="/images/nhs-highland.png" width="420" height="252" alt="NHS Highland">
+        </div>
         <ul class="evidence">
           <li>
             <strong>Peer-reviewed feasibility study</strong>

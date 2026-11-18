@@ -6,10 +6,10 @@
 
 :root {
   /* Brand colours (placeholders until we match the logo) */
-  --navy: #1c2b4a;
-  --navy-soft: #2c3e63;
-  --accent: #b8452a;       /* warm coral, passes contrast with white text */
-  --accent-hover: #9c3a23;
+  --navy: #00145b;          /* Memory Tracks logo navy */
+  --navy-soft: #1d2f74;
+  --accent: #2e65ae;       /* MedTracks logo blue, passes contrast with white text */
+  --accent-hover: #234f8a;
   --tint: #f3eee7;         /* warm off-white panel */
   --bg: #fcfbf9;
   --text: #1f2430;
@@ -87,6 +87,9 @@ p { margin: 0 0 1em; }
   margin-bottom: 0.75rem;
 }
 
+.eyebrow-product { display: flex; align-items: center; gap: 0.5rem; }
+.eyebrow-product img { border-radius: 6px; }
+
 .lead { font-size: 1.2rem; color: var(--muted); max-width: 38em; }
 
 /* ---------- Header and navigation ---------- */
@@ -115,15 +118,7 @@ p { margin: 0 0 1em; }
   font-weight: 700;
   font-size: 1.15rem;
 }
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: var(--white);
-  font-size: 1rem;
-}
+.brand-mark { height: 40px; width: auto; }
 
 .site-nav ul {
   list-style: none;
@@ -232,53 +227,54 @@ p { margin: 0 0 1em; }
 @media (max-width: 860px) {
   .hero { padding: 3rem 0; }
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { max-width: 200px; margin: 0 auto; }
+  .hero-visual { max-width: 240px; margin: 0 auto; }
 }
 
-/* Placeholder phone until a real screenshot is added */
+/* Phone frame around app screenshots */
 .phone {
   width: 100%;
-  max-width: 280px;
+  max-width: 290px;
   margin: 0 auto;
-  aspect-ratio: 9 / 18;
   background: var(--navy);
-  border-radius: 36px;
-  padding: 12px;
-  box-shadow: 0 24px 48px rgba(28, 43, 74, 0.25);
+  border-radius: 40px;
+  padding: 10px;
+  box-shadow: 0 24px 48px rgba(28, 43, 74, 0.22);
 }
-.phone-screen {
-  height: 100%;
-  background: var(--white);
-  border-radius: 26px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.5rem;
-}
-.phone-note {
-  width: 64px; height: 64px;
-  border-radius: 50%;
+.phone img { border-radius: 31px; width: 100%; }
+.phone-small { max-width: 230px; border-radius: 32px; padding: 8px; }
+.phone-small img { border-radius: 25px; }
+
+/* In the app: three screenshots with captions */
+.screens {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
   display: grid;
-  place-items: center;
-  background: var(--tint);
-  color: var(--accent);
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
-.phone-time { font-size: 2rem; font-weight: 700; color: var(--navy); margin: 0; }
-.phone-label { font-weight: 600; margin: 0 0 0.75rem; }
-.phone-song { font-size: 0.85rem; color: var(--muted); }
-.phone-btn {
-  margin-top: 0.5rem;
-  background: var(--accent);
-  color: var(--white);
-  padding: 0.45rem 1.4rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.9rem;
+.screens p { margin-top: 1.25rem; color: var(--muted); text-align: center; }
+.screens strong { display: block; color: var(--navy); }
+@media (max-width: 860px) {
+  .screens { grid-template-columns: 1fr; gap: 2.5rem; }
 }
+
+/* Research partner logo */
+.partner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.partner-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+.partner img { width: 170px; mix-blend-mode: multiply; }
 
 /* ---------- Sections ---------- */
 
@@ -287,7 +283,7 @@ p { margin: 0 0 1em; }
 .section-tint { background: var(--tint); }
 .section-dark { background: var(--navy); color: #e6e9f0; }
 .section-dark h2 { color: var(--white); }
-.section-dark .eyebrow { color: #f0a58e; }
+.section-dark .eyebrow { color: #a9c6ee; }
 
 .section-link { font-weight: 600; margin-top: 1.5rem; }
 .section-link a { text-decoration: none; }
@@ -359,7 +355,7 @@ p { margin: 0 0 1em; }
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: #141f36;
+  background: #000c38;
   color: #c9cfdb;
   padding: 3.5rem 0 1.5rem;
   font-size: 0.95rem;
@@ -375,7 +371,7 @@ p { margin: 0 0 1em; }
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
 .site-footer li { margin-bottom: 0.4rem; }
 .footer-base {
-  border-top: 1px solid #2a3753;
+  border-top: 1px solid #1c2a5c;
   margin-top: 2rem;
   padding-top: 1.25rem;
   font-size: 0.85rem;
