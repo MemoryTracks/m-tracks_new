@@ -3,11 +3,26 @@
 # Don't list folder contents
 Options -Indexes
 
+# Friendly page for addresses that don't exist
+ErrorDocument 404 /404.html
+
 RewriteEngine On
 
 # Always use the secure https:// address
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# One main address: www.m-tracks.com goes to m-tracks.com
+RewriteCond %{HTTP_HOST} ^www\.m-tracks\.com$ [NC]
+RewriteRule ^ https://m-tracks.com%{REQUEST_URI} [L,R=301]
+
+# Test site: keep new.m-tracks.com out of search engines
+RewriteCond %{HTTP_HOST} ^new\.m-tracks\.com$ [NC]
+RewriteRule ^robots\.txt$ /robots-test-site.txt [L]
+<IfModule mod_headers.c>
+  SetEnvIfNoCase Host ^new\.m-tracks\.com$ TEST_SITE
+  Header set X-Robots-Tag "noindex, nofollow" env=TEST_SITE
+</IfModule>
 
 # Old pages from the Hostinger Builder site, sent to their new homes
 RewriteRule ^products/?$ / [L,R=301]
