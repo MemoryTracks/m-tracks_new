@@ -1,0 +1,4 @@
+# Served only on new.m-tracks.com (the test site) by .htaccess.
+# Keeps the test copy out of search engines.
+User-agent: *
+Disallow: /
