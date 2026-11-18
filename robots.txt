@@ -1,0 +1,6 @@
+# TEST SITE: blocks search engines while the site is at new.m-tracks.com.
+# AT LAUNCH: replace both lines below with:
+#   User-agent: *
+#   Allow: /
+User-agent: *
+Disallow: /
