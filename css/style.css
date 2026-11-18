@@ -216,6 +216,23 @@ p { margin: 0 0 1em; }
 .btn-store-small { font-size: 0.7rem; font-weight: 500; }
 .btn-store-large { font-size: 1.05rem; }
 
+/* Small phones: store buttons share one row, "Work with us" becomes a text link */
+@media (max-width: 520px) {
+  .button-row { gap: 0.6rem; }
+  .btn-store { flex: 1 1 0; min-width: 0; padding: 0.45rem 0.8rem; }
+  .btn-store-large { font-size: 1rem; white-space: nowrap; }
+  .hero .btn-secondary {
+    flex-basis: 100%;
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 0.4rem 0;
+    border: 0;
+    color: var(--accent);
+    background: none;
+  }
+  .hero .btn-secondary::after { content: " \2192"; margin-left: 0.3rem; }
+}
+
 /* ---------- Hero ---------- */
 
 .hero {
