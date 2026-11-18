@@ -87,8 +87,8 @@ p { margin: 0 0 1em; }
   margin-bottom: 0.75rem;
 }
 
-.eyebrow-product { display: flex; align-items: center; gap: 0.5rem; }
-.eyebrow-product img { border-radius: 6px; }
+.eyebrow-product { display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; }
+.eyebrow-product img { width: 48px; height: 48px; border-radius: 11px; }
 
 .lead { font-size: 1.2rem; color: var(--muted); max-width: 38em; }
 
@@ -106,7 +106,7 @@ p { margin: 0 0 1em; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 68px;
+  min-height: 88px;
 }
 
 .brand {
@@ -118,7 +118,8 @@ p { margin: 0 0 1em; }
   font-weight: 700;
   font-size: 1.15rem;
 }
-.brand-mark { height: 40px; width: auto; }
+.brand-mark { height: 64px; width: auto; }
+.brand-name { font-size: 1.35rem; }
 
 .site-nav ul {
   list-style: none;
@@ -167,10 +168,13 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 760px) {
   .nav-toggle { display: block; }
+  .header-inner { min-height: 72px; }
+  .brand-mark { height: 50px; }
+  .brand-name { font-size: 1.2rem; }
   .site-nav {
     display: none;
     position: absolute;
-    top: 68px; left: 0; right: 0;
+    top: 72px; left: 0; right: 0;
     background: var(--white);
     border-bottom: 1px solid var(--line);
     padding: 1rem 1.25rem 1.5rem;
@@ -227,36 +231,93 @@ p { margin: 0 0 1em; }
 @media (max-width: 860px) {
   .hero { padding: 3rem 0; }
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { max-width: 240px; margin: 0 auto; }
+  .hero-visual .phone { --w: 180px; }
 }
 
-/* Phone frame around app screenshots */
+/* iPhone-style frame around app screenshots.
+   Size is set by --w; corners, bezel and Dynamic Island scale with it. */
 .phone {
-  width: 100%;
-  max-width: 290px;
+  --w: 290px;
+  position: relative;
+  width: var(--w);
+  max-width: 100%;
   margin: 0 auto;
-  background: var(--navy);
-  border-radius: 40px;
-  padding: 10px;
-  box-shadow: 0 24px 48px rgba(28, 43, 74, 0.22);
+  padding: calc(var(--w) * 0.035);
+  background: #1b1b1f;
+  border-radius: calc(var(--w) * 0.165);
+  box-shadow:
+    0 0 0 2px #3a3a40,
+    0 30px 60px rgba(0, 20, 91, 0.25);
 }
-.phone img { border-radius: 31px; width: 100%; }
-.phone-small { max-width: 230px; border-radius: 32px; padding: 8px; }
-.phone-small img { border-radius: 25px; }
+.phone img {
+  width: 100%;
+  border-radius: calc(var(--w) * 0.135);
+}
+/* Dynamic Island */
+.phone::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--w) * 0.06);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: calc(var(--w) * 0.085);
+  background: #000;
+  border-radius: 999px;
+  z-index: 2;
+}
+/* Side buttons */
+.phone::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 28%;
+  width: 3px;
+  height: 14%;
+  background: #3a3a40;
+  border-radius: 0 2px 2px 0;
+}
+.phone-small { --w: 210px; }
 
-/* In the app: three screenshots with captions */
+/* In the app: three screenshots side by side */
 .screens {
   list-style: none;
   padding: 0;
   margin: 2rem 0 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
 }
-.screens p { margin-top: 1.25rem; color: var(--muted); text-align: center; }
+.screens li { text-align: center; }
+.screens p { margin-top: 1.25rem; color: var(--muted); }
 .screens strong { display: block; color: var(--navy); }
+
+.swipe-hint {
+  display: none;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0.25rem 0 0;
+}
+
+/* Phones and tablets: a sideways swipe row, so the page is shorter */
 @media (max-width: 860px) {
-  .screens { grid-template-columns: 1fr; gap: 2.5rem; }
+  .screens {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 1.5rem -1.25rem 0;
+    padding: 0.5rem 1.25rem 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .screens li {
+    flex: 0 0 62%;
+    max-width: 240px;
+    scroll-snap-align: center;
+  }
+  .phone-small { --w: 170px; }
+  .screens p { font-size: 0.95rem; }
+  .swipe-hint { display: block; }
 }
 
 /* Research partner logo */
@@ -327,7 +388,17 @@ p { margin: 0 0 1em; }
 }
 .steps p { color: var(--muted); margin: 0; }
 @media (max-width: 860px) {
-  .steps { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.25rem; }
+  .steps li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    column-gap: 0.9rem;
+    padding: 1.1rem 1.1rem 1.1rem 1rem;
+  }
+  .steps li::before { width: 32px; height: 32px; margin: 0; font-size: 0.9rem; grid-row: 1; align-self: start; }
+  .steps h3 { grid-column: 2; margin-bottom: 0.3rem; font-size: 1.05rem; }
+  .steps p { grid-column: 2; font-size: 0.95rem; }
+  .section { padding: 3rem 0; }
 }
 
 /* Evidence strip */
