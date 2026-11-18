@@ -220,11 +220,19 @@ p { margin: 0 0 1em; }
 .btn-store-small { font-size: 0.7rem; font-weight: 500; }
 .btn-store-large { font-size: 1.05rem; }
 
+/* Official App Store and Google Play badges.
+   Google's badge file includes its own clear space, so it is drawn larger
+   and pulled in with negative margins to line up with Apple's badge. */
+.store-badge { display: inline-flex; align-items: center; line-height: 0; }
+.store-badge img { height: 48px; width: auto; }
+.store-badge-google img { height: 72px; margin: -12px -10px; }
+.button-row { align-items: center; }
+
 /* Small phones: store buttons share one row, "Work with us" becomes a text link */
 @media (max-width: 520px) {
   .button-row { gap: 0.6rem; }
-  .btn-store { flex: 1 1 0; min-width: 0; padding: 0.45rem 0.8rem; }
-  .btn-store-large { font-size: 1rem; white-space: nowrap; }
+  .store-badge img { height: 44px; }
+  .store-badge-google img { height: 66px; margin: -11px -9px; }
   .hero .btn-secondary {
     flex-basis: 100%;
     justify-content: flex-start;
@@ -739,3 +747,5 @@ p { margin: 0 0 1em; }
 .legal p, .legal li { overflow-wrap: anywhere; }
 .legal-address { margin: 0; }
 .legal-updated { margin-top: 2rem; color: var(--muted); font-size: 0.95rem; }
+
+.store-note { margin: 0.85rem 0 0; font-size: 0.9rem; color: var(--muted); }
